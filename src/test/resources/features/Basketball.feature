@@ -34,4 +34,3 @@ Feature: Test of BasketballEngland
     Then The "You must confirm that you have read, understood and agree to the Code of Ethics and Conduct" is displayed
 
 
-

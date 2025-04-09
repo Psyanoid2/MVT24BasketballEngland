@@ -10,7 +10,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -28,7 +27,6 @@ public class BasketballenglandStepdefs {
         if (browser.equals("firefox")) driver = new FirefoxDriver();
         driver.get("https://membership.basketballengland.co.uk/NewSupporterAccount");
         driver.manage().window().maximize();
-
     }
 
     //Skapa konto, checka i allt
@@ -80,7 +78,6 @@ public class BasketballenglandStepdefs {
                 .click();
         driver.findElement(By.cssSelector(".btn"))
                 .click();
-
     }
 
     //Kontrollera att verifieringssida laddar
@@ -99,6 +96,8 @@ public class BasketballenglandStepdefs {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".username")));
         String url = driver.getCurrentUrl();
         assertEquals(url, confirmationUrl);
+        //Stäng läsare efter test
+        driver.quit();
     }
 
     //Är på sida utan att testa browsers
@@ -154,19 +153,20 @@ public class BasketballenglandStepdefs {
                 .sendKeys(lastname + "\n");
     }
 
-    //Testa varningsmeddelande samtliga
+    //Testa varningsmeddelande
 
     @Then("The {string} is displayed")
     public void theErrormessageIsDisplayed(String errormessage) {
         String err = driver.findElement(By.cssSelector(".warning > span")).getText();
         assertEquals(errormessage, err);
+        //Stäng läsare efter test
+        driver.quit();
     }
 
     //Skapa konto utan att checka i Terms and Conditions
 
     @When("I create an account without accepting terms and conditions")
     public void iCreateAnAccountWithoutAcceptingTermsAndConditions() {
-
         driver.findElement(By.id("dp"))
                 .sendKeys("27/08/1990" + "\n");
         driver.findElement(By.cssSelector("#member_firstname"))
