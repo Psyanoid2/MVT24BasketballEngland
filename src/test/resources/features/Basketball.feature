@@ -10,11 +10,16 @@ Feature: Test of BasketballEngland
       | chrome  |
       | firefox |
 
-  Scenario: Create error message (name)
+  Scenario: Create error message (invalid lastname)
     Given I am at BasketballEngland page
     When I enter my name "Test"
     And I enter my lastname "!\"€"
     Then The "Invalid Value - Allowed characters: A-Z, space and '/\&.-" is displayed
+
+  Scenario: Create error message (missing lastname)
+    Given I am at BasketballEngland page
+    When I create an account without entering my lastname
+    Then The "Last Name is required" is displayed
 
   Scenario: Create error message (password)
     Given I am at BasketballEngland page

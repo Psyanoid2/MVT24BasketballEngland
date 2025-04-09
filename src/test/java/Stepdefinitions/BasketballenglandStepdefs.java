@@ -222,6 +222,53 @@ public class BasketballenglandStepdefs {
         driver.findElement(By.cssSelector(".btn"))
                 .click();
     }
+
+    @When("I create an account without entering my lastname")
+    public void ICreateAnAccountWithoutEnteringMyLastName() {
+
+        driver.findElement(By.id("dp"))
+                .sendKeys("27/08/1990" + "\n");
+        driver.findElement(By.cssSelector("#member_firstname"))
+                .sendKeys("Test");
+        driver.findElement(By.cssSelector("#member_emailaddress"))
+                .sendKeys(email);
+        driver.findElement(By.cssSelector("#member_confirmemailaddress"))
+                .sendKeys(email);
+        driver.findElement(By.cssSelector("#signupunlicenced_password"))
+                .sendKeys("abc123");
+        driver.findElement(By.cssSelector("#signupunlicenced_confirmpassword"))
+                .sendKeys("abc123");
+        driver.findElement(By.cssSelector(".col-sm-4:nth-child(3) .box"))
+                .click();
+        driver.findElement(By.cssSelector(".col-sm-4:nth-child(6) .box"))
+                .click();
+        driver.findElement(By.cssSelector(".col-sm-4:nth-child(9) .box"))
+                .click();
+        driver.findElement(By.cssSelector(".col-sm-4:nth-child(12) .box"))
+                .click();
+        driver.findElement(By.cssSelector(".col-sm-4:nth-child(15) .box"))
+                .click();
+        driver.findElement(By.cssSelector(".col-sm-4:nth-child(18) .box"))
+                .click();
+        driver.findElement(By.cssSelector(".col-sm-4:nth-child(21) .box"))
+                .click();
+        driver.findElement(By.cssSelector(".col-sm-4:nth-child(24) .box"))
+                .click();
+        driver.findElement(By.cssSelector(".col-sm-4:nth-child(27) .box"))
+                .click();
+        driver.findElement(By.cssSelector(".md-checkbox > .md-checkbox:nth-child(1) .box"))
+                .click();
+        driver.findElement(By.cssSelector(".md-checkbox:nth-child(2) > label > .box"))
+                .click();
+        driver.findElement(By.xpath("//div[4]/label/span[3]"))
+                .click();
+        driver.findElement(By.xpath("//div[5]/label/span[3]"))
+                .click();
+        driver.findElement(By.xpath("//div[7]/label/span[3]"))
+                .click();
+        driver.findElement(By.cssSelector(".btn"))
+                .click();
+    }
 }
 
 
