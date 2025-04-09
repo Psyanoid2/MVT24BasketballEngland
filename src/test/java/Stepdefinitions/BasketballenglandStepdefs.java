@@ -28,8 +28,8 @@ public class BasketballenglandStepdefs {
 
     //Privat explicit wait-metod fast för Element
 
-    private void waitForVisibility(By locator, int timeoutInSeconds) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+    private void waitForVisibility(By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
@@ -105,7 +105,7 @@ public class BasketballenglandStepdefs {
 
     @Then("We see our account page {string}")
     public void weSeeOurAccountPage(String confirmationUrl) {
-        waitForVisibility(By.cssSelector(".username"), 10);
+        waitForVisibility(By.cssSelector(".username"));
         String url = driver.getCurrentUrl();
         assertEquals(url, confirmationUrl);
     //Stäng läsare efter test
