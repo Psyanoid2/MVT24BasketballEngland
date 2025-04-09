@@ -19,6 +19,20 @@ public class BasketballenglandStepdefs {
     WebDriver driver;
     String email = (System.currentTimeMillis() % 100000) + "@mailnesia.com";
 
+    //Privat explicit wait-metod
+
+    private void waitAndClick(By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+    }
+
+    //Privat explicit wait-metod fast för Element
+
+    private void waitForVisibility(By locator, int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
     //Testa två olika browsers
 
     @Given("I am at BasketballEngland page using {string}")
@@ -84,19 +98,17 @@ public class BasketballenglandStepdefs {
 
     @Then("The account is successfully created")
     public void TheAccountIsSuccessfullyCreated() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("GO TO MY LOCKER"))).click();
+        waitAndClick(By.linkText("GO TO MY LOCKER"));
     }
 
     //Kontrollera att vi får svar på verifieringssida
 
     @Then("We see our account page {string}")
     public void weSeeOurAccountPage(String confirmationUrl) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".username")));
+        waitForVisibility(By.cssSelector(".username"), 10);
         String url = driver.getCurrentUrl();
         assertEquals(url, confirmationUrl);
-        //Stäng läsare efter test
+    //Stäng läsare efter test
         driver.quit();
     }
 
