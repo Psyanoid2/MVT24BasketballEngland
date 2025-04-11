@@ -33,7 +33,7 @@ Feature: Test of BasketballEngland
     And I confirm my email "scrappydoo@mysterywagon.com"
     Then The "Confirm Email Address does not match" is displayed
 
-  Scenario:
+  Scenario: Create error message (terms and conditions)
     Given I am at BasketballEngland page
     When I create an account without accepting terms and conditions
     Then The "You must confirm that you have read, understood and agree to the Code of Ethics and Conduct" is displayed
